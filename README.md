@@ -1,6 +1,6 @@
 # Minería de Datos 2025
 
-Este repositorio contendrá ls  prácticas de la materia de **Minería de Datos**.
+Este repositorio contendrá las  prácticas de la materia de **Minería de Datos**.
 ## Práctica 1
 
 - [Crimenes_Chicago_Limpio_7000.csv](https://github.com/IdAle3/MineriaDeDatos2025/blob/main/Practica1/Crimenes_Chicago_Limpio_7000.csv)  
