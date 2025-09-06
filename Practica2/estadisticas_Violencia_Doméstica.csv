@@ -1,0 +1,4 @@
+Violencia Doméstica,Año,Año,Año,Año,Mes,Mes,Mes,Mes,Día,Día,Día,Día,Hora,Hora,Hora,Hora,Hora,Hora,Hora,Hora
+,count,min,max,obtener_moda,count,min,max,obtener_moda,count,min,max,obtener_moda,count,mean,min,max,var,std,obtener_moda,kurt
+No,5895,2012,2016,2012,5895,1,12,5,5895,1,31,20,5895,13.34147582697201,0,23,42.42952310151106,6.513794831088178,19,-0.7213684572943038
+Sí,1105,2012,2016,2013,1105,1,12,3,1105,1,31,20,1105,12.196380090497737,0,23,53.005783985835066,7.28050712422116,0,-1.206605615864209
