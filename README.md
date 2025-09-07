@@ -15,7 +15,7 @@ Este repositorio contendrá las  prácticas de la materia de **Minería de Datos
   ## Práctica 2
 
 
-- [Estadistica Descriptiva con Crimenes en Chicago](https://github.com/IdAle3/MineriaDeDatos2025/blob/main/Practica2/EstadisticaDescriptivaconCrimenesenChicago.ipynb)  
+- [Estadistica Descriptiva con Crimenes en Chicago](https://github.com/IdAle3/MineriaDeDatos2025/blob/main/Practica2/Estadisticas.py)  
 
 - [DIAGRAMA ER](https://github.com/IdAle3/MineriaDeDatos2025/blob/main/Practica2/DIAGRAMA%20ER.png)  
-  Link a la imagen, también está en el ipynb
+  Link a la imagen
