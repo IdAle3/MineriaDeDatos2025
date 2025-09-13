@@ -19,3 +19,11 @@ Este repositorio contendrá las  prácticas de la materia de **Minería de Datos
 
 - [DIAGRAMA ER](https://github.com/IdAle3/MineriaDeDatos2025/blob/main/Practica2/DIAGRAMA%20ER.png)  
   Link a la imagen
+
+  ## Práctica 3
+
+
+- [Script con la construcción de las gráficas](https://github.com/IdAle3/MineriaDeDatos2025/blob/main/Practica3/practica3.py)  
+
+- [Carpeta con imagenes de las gráficas](https://github.com/IdAle3/MineriaDeDatos2025/tree/main/Practica3/graficas)  
+
