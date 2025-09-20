@@ -56,6 +56,14 @@ def compare_groups(df, distritos, normal_results):
         print("\n=== Kruskal-Wallis ===")
         print("Estadístico H:", res.statistic)
         print("p-valor:", res.pvalue)
+        alpha = 0.05  # Nivel de significancia
+    if res.pvalue < alpha:
+        print(f"Conclusión: p < {alpha}. Rechazamos la hipótesis nula → al menos un grupo presenta diferencias significativas respecto a los demás. "
+            f"Esto indica que los grupos no tienen distribuciones iguales y al menos uno se comporta de manera distinta.")
+    else:
+        print(f"Conclusión: p >= {alpha}. No se rechaza la hipótesis nula → no hay evidencia suficiente para afirmar que los grupos difieren. "
+            f"Esto sugiere que las distribuciones de los grupos son similares y no se observan diferencias significativas.")
+
 
 
 def pairwise_test(df, d1, d2, alpha=0.05):
@@ -64,18 +72,43 @@ def pairwise_test(df, d1, d2, alpha=0.05):
     data2 = df[df["Distrito"] == d2]["Año"]
     d1_normal, _, _ = normality_test(data1, alpha)
     d2_normal, _, _ = normality_test(data2, alpha)
-
-    print(f"\nDistrito {d1} normal: {d1_normal}")
-    print(f"Distrito {d2} normal: {d2_normal}")
+    alpha = 0.05  # Nivel de significancia
 
     if d1_normal and d2_normal:
+        # T-Test de Welch
         res = stats.ttest_ind(data1, data2, equal_var=False)
-        print("\n=== T-Test ===")
-        print(f"Distrito {d1} vs {d2} -> Estadístico t={res.statistic:.4f}, p={res.pvalue:.4e}")
+        test_name = "T-Test (Welch)"
+        stat_name = "t"
     else:
+        # Mann-Whitney U
         res = stats.mannwhitneyu(data1, data2)
-        print("\n=== Mann-Whitney U ===")
-        print(f"Distrito {d1} vs {d2} -> Estadístico U={res.statistic:.4f}, p={res.pvalue:.4e}")
+        test_name = "Mann-Whitney U"
+        stat_name = "U"
+
+    # Resultados
+    print(f"\n=== {test_name} ===")
+    print(f"Distrito {d1} normal: {d1_normal}")
+    print(f"Distrito {d2} normal: {d2_normal}")
+    print(f"Distrito {d1} vs {d2} -> Estadístico {stat_name} = {res.statistic:.4f}, p-valor = {res.pvalue:.4e}")
+
+    # Conclusión 
+    if res.pvalue < alpha:
+        if test_name == "T-Test (Welch)":
+            print(f"\n=== {test_name} ===\nDistrito {d1} normal: {d1_normal}\nDistrito {d2} normal: {d2_normal}\n"
+                f"Distrito {d1} vs {d2} -> Estadístico {stat_name} = {res.statistic:.4f}, p-valor = {res.pvalue:.4e}\n"
+                f"Conclusión: La diferencia en las medias de {d1} y {d2} es estadísticamente significativa "
+                f"(p < {alpha}), lo que indica que los dos distritos tienen un comportamiento distinto en la variable analizada.")
+        else:
+            print(f"\n=== {test_name} ===\nDistrito {d1} normal: {d1_normal}\nDistrito {d2} normal: {d2_normal}\n"
+                f"Distrito {d1} vs {d2} -> Estadístico {stat_name} = {res.statistic:.4f}, p-valor = {res.pvalue:.4e}\n"
+                f"Conclusión: La diferencia en la distribución/mediana de {d1} y {d2} es estadísticamente significativa "
+                f"(p < {alpha}), lo que indica que los dos distritos presentan patrones distintos en la variable analizada.")
+    else:
+        print(f"\n=== {test_name} ===\nDistrito {d1} normal: {d1_normal}\nDistrito {d2} normal: {d2_normal}\n"
+            f"Distrito {d1} vs {d2} -> Estadístico {stat_name} = {res.statistic:.4f}, p-valor = {res.pvalue:.4e}\n"
+            f"Conclusión: No se encontró evidencia suficiente de diferencias entre {d1} y {d2} "
+            f"(p ≥ {alpha}), lo que sugiere que ambos distritos tienen un comportamiento similar en la variable analizada.")
+
 
 
 def plot_histograms(df, distritos, normal_results, output_dir):
