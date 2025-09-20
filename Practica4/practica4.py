@@ -1,5 +1,5 @@
 # Práctica 4 - Statistical Test
-# ANOVA, T-test y Kruskal-Wallis en crímenes de Chicago
+# ANOVA o Kruskal-Wallis en crímenes de Chicago
 
 import pandas as pd
 import numpy as np
@@ -63,53 +63,6 @@ def compare_groups(df, distritos, normal_results):
     else:
         print(f"Conclusión: p >= {alpha}. No se rechaza la hipótesis nula → no hay evidencia suficiente para afirmar que los grupos difieren. "
             f"Esto sugiere que las distribuciones de los grupos son similares y no se observan diferencias significativas.")
-
-
-
-def pairwise_test(df, d1, d2, alpha=0.05):
-    """Compara los dos distritos principales con T-test o Mann-Whitney."""
-    data1 = df[df["Distrito"] == d1]["Año"]
-    data2 = df[df["Distrito"] == d2]["Año"]
-    d1_normal, _, _ = normality_test(data1, alpha)
-    d2_normal, _, _ = normality_test(data2, alpha)
-    alpha = 0.05  # Nivel de significancia
-
-    if d1_normal and d2_normal:
-        # T-Test de Welch
-        res = stats.ttest_ind(data1, data2, equal_var=False)
-        test_name = "T-Test (Welch)"
-        stat_name = "t"
-    else:
-        # Mann-Whitney U
-        res = stats.mannwhitneyu(data1, data2)
-        test_name = "Mann-Whitney U"
-        stat_name = "U"
-
-    # Resultados
-    print(f"\n=== {test_name} ===")
-    print(f"Distrito {d1} normal: {d1_normal}")
-    print(f"Distrito {d2} normal: {d2_normal}")
-    print(f"Distrito {d1} vs {d2} -> Estadístico {stat_name} = {res.statistic:.4f}, p-valor = {res.pvalue:.4e}")
-
-    # Conclusión 
-    if res.pvalue < alpha:
-        if test_name == "T-Test (Welch)":
-            print(f"\n=== {test_name} ===\nDistrito {d1} normal: {d1_normal}\nDistrito {d2} normal: {d2_normal}\n"
-                f"Distrito {d1} vs {d2} -> Estadístico {stat_name} = {res.statistic:.4f}, p-valor = {res.pvalue:.4e}\n"
-                f"Conclusión: La diferencia en las medias de {d1} y {d2} es estadísticamente significativa "
-                f"(p < {alpha}), lo que indica que los dos distritos tienen un comportamiento distinto en la variable analizada.")
-        else:
-            print(f"\n=== {test_name} ===\nDistrito {d1} normal: {d1_normal}\nDistrito {d2} normal: {d2_normal}\n"
-                f"Distrito {d1} vs {d2} -> Estadístico {stat_name} = {res.statistic:.4f}, p-valor = {res.pvalue:.4e}\n"
-                f"Conclusión: La diferencia en la distribución/mediana de {d1} y {d2} es estadísticamente significativa "
-                f"(p < {alpha}), lo que indica que los dos distritos presentan patrones distintos en la variable analizada.")
-    else:
-        print(f"\n=== {test_name} ===\nDistrito {d1} normal: {d1_normal}\nDistrito {d2} normal: {d2_normal}\n"
-            f"Distrito {d1} vs {d2} -> Estadístico {stat_name} = {res.statistic:.4f}, p-valor = {res.pvalue:.4e}\n"
-            f"Conclusión: No se encontró evidencia suficiente de diferencias entre {d1} y {d2} "
-            f"(p ≥ {alpha}), lo que sugiere que ambos distritos tienen un comportamiento similar en la variable analizada.")
-
-
 
 def plot_histograms(df, distritos, normal_results, output_dir):
     """Genera histogramas individuales por distrito."""
@@ -192,8 +145,6 @@ if __name__ == "__main__":
 
     normal_results = test_normality_by_district(df_top, top_distritos)
     compare_groups(df_top, top_distritos, normal_results)
-    pairwise_test(df_top, top_distritos[0], top_distritos[1])
-
     plot_histograms(df_top, top_distritos, normal_results, OUTPUT_DIR)
     plot_kde_comparison(df_top, top_distritos, OUTPUT_DIR)
     plot_matrix(df_top, top_distritos, OUTPUT_DIR)
