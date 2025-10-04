@@ -38,6 +38,6 @@ Este repositorio contendrá las  prácticas de la materia de **Minería de Datos
  ## Práctica 5
 
 
-- [Script con la regresión linear]()  
+- [Script con la regresión linear](https://github.com/IdAle3/MineriaDeDatos2025/blob/main/Practica5/practica5.py)  
 
-- [Carpeta con imagenes de las gráficas]()  
+- [Carpeta con imagenes de las gráficas](https://github.com/IdAle3/MineriaDeDatos2025/tree/main/Practica5/img)  
