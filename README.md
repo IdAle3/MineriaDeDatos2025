@@ -49,3 +49,10 @@ Este repositorio contendrá las  prácticas de la materia de **Minería de Datos
 - [Script con el modelo KNN](https://github.com/IdAle3/MineriaDeDatos2025/blob/main/Practica6/practica6.py)  
 
 - [Carpeta con imagenes de las gráficas](https://github.com/IdAle3/MineriaDeDatos2025/tree/main/Practica6/img)  
+
+ ## Práctica 7
+
+
+- [Script practica 7](https://github.com/IdAle3/MineriaDeDatos2025/blob/main/Practica7/practica7.py)  
+
+- [Carpeta con imagenes de las gráficas](https://github.com/IdAle3/MineriaDeDatos2025/tree/main/Practica7/img)  
