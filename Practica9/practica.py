@@ -39,7 +39,6 @@ def generate_wordcloud(df, column, output_path):
 
 
 def main():
-    # Rutas de tu proyecto
     csv_path = "Practica1/Crimenes_Chicago_Limpio_7000.csv"
     output_folder = "Practica9/img"
     output_image = f"{output_folder}/word_cloud_descripcion.png"
