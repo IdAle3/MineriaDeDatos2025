@@ -68,6 +68,6 @@ Este repositorio contendrá las  prácticas de la materia de **Minería de Datos
 ## Práctica 9
 
 
-- [Script practica 8](https://github.com/IdAle3/MineriaDeDatos2025/blob/main/Practica8/practica_9.py)  
+- [Script practica 8](https://github.com/IdAle3/MineriaDeDatos2025/blob/main/Practica_9/practica_9.py)  
 
-- [Carpeta con imagenes de las gráficas](https://github.com/IdAle3/MineriaDeDatos2025/tree/main/Practica9/img)  
+- [Carpeta con imagenes de las gráficas](https://github.com/IdAle3/MineriaDeDatos2025/tree/main/Practica_9/img)  
